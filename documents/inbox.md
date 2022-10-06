@@ -9,7 +9,7 @@
 - 1/5 + 3/5 = 4/5    # no reducing
 - 3 + 5 = 8    # backwards compatible with integers
 - ~~4 + 0 = 4~~    # no need to add
-- 0 + 7 = 7
+- ~~0 + 7 = 7~~
 - ~~0 + 0 = 0~~    # kernel
 - -8 + 4 = -4
 - -1/7 + 3/7 = 2/7
