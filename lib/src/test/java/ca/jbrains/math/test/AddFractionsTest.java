@@ -32,19 +32,45 @@ public class AddFractionsTest {
         Assertions.assertEquals(9, sum.intValue());
     }
 
+    @Test
+    void nonIntegerPlusZero() {
+        Fraction sum = new Fraction(1, 3).plus(new Fraction(0));
+
+        Assertions.assertEquals(1, sum.numerator());
+        Assertions.assertEquals(3, sum.denominator());
+    }
+
     public static class Fraction {
-        private final int integerValue;
+        private int numerator;
+        private int denominator;
+        private int integerValue;
 
         public Fraction(int integerValue) {
             this.integerValue = integerValue;
         }
 
+        public Fraction(int numerator, int denominator) {
+            this.numerator = numerator;
+            this.denominator = denominator;
+        }
+
         public Fraction plus(Fraction that) {
-            return new Fraction(this.integerValue + that.integerValue);
+            if (denominator == 0)
+                return new Fraction(this.integerValue + that.integerValue);
+            else
+                return this;
         }
 
         public int intValue() {
             return integerValue;
+        }
+
+        public int numerator() {
+            return numerator;
+        }
+
+        public int denominator() {
+            return denominator;
         }
     }
 }
