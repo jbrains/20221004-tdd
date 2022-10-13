@@ -91,14 +91,6 @@ public class AddFractionsTest {
             }
         }
 
-        public int numerator() {
-            return numerator;
-        }
-
-        public int denominator() {
-            return denominator;
-        }
-
         @Override
         public boolean equals(Object other) {
             if (other instanceof Fraction) {
