@@ -61,6 +61,13 @@ public class AddFractionsTest {
         Assertions.assertEquals(45, sum.denominator());
     }
 
+    @Test
+    void answerNotInLowestTerms() {
+        Fraction sum = new Fraction(1, 8).plus(new Fraction(3, 8));
+
+        Assertions.assertEquals(new Fraction(1, 2), sum);
+    }
+
     public static class Fraction {
         private int numerator;
         private int denominator;
@@ -97,6 +104,21 @@ public class AddFractionsTest {
 
         public int denominator() {
             return denominator;
+        }
+
+        @Override
+        public boolean equals(Object other) {
+            if (other instanceof Fraction) {
+                Fraction that = (Fraction) other;
+                return this.numerator * that.denominator == that.numerator * this.denominator;
+            } else {
+                return false;
+            }
+        }
+
+        @Override
+        public int hashCode() {
+            return -762;
         }
     }
 }
