@@ -40,6 +40,14 @@ public class AddFractionsTest {
         Assertions.assertEquals(3, sum.denominator());
     }
 
+    @Test
+    void nonIntegerFractionsWithoutReducingTheAnswer() {
+        Fraction sum = new Fraction(3, 7).plus(new Fraction(1, 7));
+
+        Assertions.assertEquals(4, sum.numerator());
+        Assertions.assertEquals(7, sum.denominator());
+    }
+
     public static class Fraction {
         private int numerator;
         private int denominator;
@@ -57,8 +65,13 @@ public class AddFractionsTest {
         public Fraction plus(Fraction that) {
             if (denominator == 0)
                 return new Fraction(this.integerValue + that.integerValue);
-            else
-                return this;
+            else {
+                if (this.denominator == that.denominator) {
+                    return new Fraction(this.numerator + that.numerator, this.denominator);
+                } else {
+                    return this;
+                }
+            }
         }
 
         public int intValue() {
