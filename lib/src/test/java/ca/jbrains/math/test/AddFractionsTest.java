@@ -49,7 +49,6 @@ public class AddFractionsTest {
         Assertions.assertEquals(7, sum.denominator());
     }
 
-    @Disabled("wip: refactoring")
     @Test
     void nonIntegerFractionsWithDifferentDenominators() {
         Fraction sum = new Fraction(2, 5).plus(new Fraction(4, 9));
@@ -81,7 +80,9 @@ public class AddFractionsTest {
                 if (this.denominator == that.denominator) {
                     return new Fraction(this.numerator + that.numerator, this.denominator);
                 } else {
-                    return new Fraction(23874, 87234);
+                    return new Fraction(
+                            this.numerator * that.denominator + this.denominator * that.numerator,
+                            this.denominator * that.denominator);
                 }
             }
         }
