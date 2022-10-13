@@ -9,56 +9,49 @@ public class AddFractionsTest {
     void zeroPlusZero() {
         Fraction sum = new Fraction(0).plus(new Fraction(0));
 
-        Assertions.assertEquals(0, sum.numerator());
-        Assertions.assertEquals(1, sum.denominator());
+        Assertions.assertEquals(new Fraction(0), sum);
     }
 
     @Test
     void notZeroPlusZero() {
         Fraction sum = new Fraction(4).plus(new Fraction(0));
 
-        Assertions.assertEquals(4, sum.numerator());
-        Assertions.assertEquals(1, sum.denominator());
+        Assertions.assertEquals(new Fraction(4), sum);
     }
 
     @Test
     void zeroPlusNotZero() {
         Fraction sum = new Fraction(0).plus(new Fraction(7));
 
-        Assertions.assertEquals(7, sum.numerator());
-        Assertions.assertEquals(1, sum.denominator());
+        Assertions.assertEquals(new Fraction(7), sum);
     }
 
     @Test
     void notZeroPlusNotZero() {
         Fraction sum = new Fraction(3).plus(new Fraction(6));
 
-        Assertions.assertEquals(9, sum.numerator());
-        Assertions.assertEquals(1, sum.denominator());
+        Assertions.assertEquals(new Fraction(9), sum);
     }
 
     @Test
     void nonIntegerPlusZero() {
         Fraction sum = new Fraction(1, 3).plus(new Fraction(0));
 
-        Assertions.assertEquals(1, sum.numerator());
-        Assertions.assertEquals(3, sum.denominator());
+        Assertions.assertEquals(new Fraction(1, 3), sum);
     }
 
     @Test
     void nonIntegerFractionsWithoutReducingTheAnswer() {
         Fraction sum = new Fraction(3, 7).plus(new Fraction(1, 7));
 
-        Assertions.assertEquals(4, sum.numerator());
-        Assertions.assertEquals(7, sum.denominator());
+        Assertions.assertEquals(new Fraction(4, 7), sum);
     }
 
     @Test
     void nonIntegerFractionsWithDifferentDenominators() {
         Fraction sum = new Fraction(2, 5).plus(new Fraction(4, 9));
 
-        Assertions.assertEquals(38, sum.numerator());
-        Assertions.assertEquals(45, sum.denominator());
+        Assertions.assertEquals(new Fraction(38, 45), sum);
     }
 
     @Test
