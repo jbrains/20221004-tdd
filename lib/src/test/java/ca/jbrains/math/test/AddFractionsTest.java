@@ -1,6 +1,7 @@
 package ca.jbrains.math.test;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class AddFractionsTest {
@@ -48,6 +49,15 @@ public class AddFractionsTest {
         Assertions.assertEquals(7, sum.denominator());
     }
 
+    @Disabled("wip: refactoring")
+    @Test
+    void nonIntegerFractionsWithDifferentDenominators() {
+        Fraction sum = new Fraction(2, 5).plus(new Fraction(4, 9));
+
+        Assertions.assertEquals(38, sum.numerator());
+        Assertions.assertEquals(45, sum.denominator());
+    }
+
     public static class Fraction {
         private int numerator;
         private int denominator;
@@ -63,13 +73,15 @@ public class AddFractionsTest {
         }
 
         public Fraction plus(Fraction that) {
-            if (denominator == 0)
+            if (denominator == 0) {
                 return new Fraction(this.integerValue + that.integerValue);
-            else {
+            } else if (that.integerValue == 0 && that.numerator == 0) {
+                return this;
+            } else {
                 if (this.denominator == that.denominator) {
                     return new Fraction(this.numerator + that.numerator, this.denominator);
                 } else {
-                    return this;
+                    return new Fraction(23874, 87234);
                 }
             }
         }
