@@ -9,28 +9,32 @@ public class AddFractionsTest {
     void zeroPlusZero() {
         Fraction sum = new Fraction(0).plus(new Fraction(0));
 
-        Assertions.assertEquals(0, sum.intValue());
+        Assertions.assertEquals(0, sum.numerator());
+        Assertions.assertEquals(1, sum.denominator());
     }
 
     @Test
     void notZeroPlusZero() {
         Fraction sum = new Fraction(4).plus(new Fraction(0));
 
-        Assertions.assertEquals(4, sum.intValue());
+        Assertions.assertEquals(4, sum.numerator());
+        Assertions.assertEquals(1, sum.denominator());
     }
 
     @Test
     void zeroPlusNotZero() {
         Fraction sum = new Fraction(0).plus(new Fraction(7));
 
-        Assertions.assertEquals(7, sum.intValue());
+        Assertions.assertEquals(7, sum.numerator());
+        Assertions.assertEquals(1, sum.denominator());
     }
 
     @Test
     void notZeroPlusNotZero() {
         Fraction sum = new Fraction(3).plus(new Fraction(6));
 
-        Assertions.assertEquals(9, sum.intValue());
+        Assertions.assertEquals(9, sum.numerator());
+        Assertions.assertEquals(1, sum.denominator());
     }
 
     @Test
@@ -64,11 +68,14 @@ public class AddFractionsTest {
 
         public Fraction(int integerValue) {
             this.integerValue = integerValue;
+            this.numerator = integerValue;
+            this.denominator = 1;
         }
 
         public Fraction(int numerator, int denominator) {
             this.numerator = numerator;
             this.denominator = denominator;
+            this.integerValue = numerator;
         }
 
         public Fraction plus(Fraction that) {
@@ -85,10 +92,6 @@ public class AddFractionsTest {
                             this.denominator * that.denominator);
                 }
             }
-        }
-
-        public int intValue() {
-            return integerValue;
         }
 
         public int numerator() {
