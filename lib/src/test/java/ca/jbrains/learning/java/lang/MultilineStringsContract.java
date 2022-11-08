@@ -17,7 +17,9 @@ public class MultilineStringsContract {
     }
 
     private static String[] linesOf(String firstLineIsBlank) {
-        return firstLineIsBlank.split(System.lineSeparator());
+        // https://stackoverflow.com/a/2406699/253921
+        // This regex will preserve empty lines in our text when splitting.
+        return firstLineIsBlank.split(String.format("(?=%s)", System.lineSeparator()));
     }
 
     @Test
