@@ -90,7 +90,7 @@ public class SellOneItemTest {
         }
 
         private String findPrice(String barcode) {
-            return new Catalog(pricesByBarcode).findPriceInCatalog(barcode);
+            return new Catalog(pricesByBarcode).findPrice(barcode);
         }
 
         private class Catalog {
@@ -100,7 +100,7 @@ public class SellOneItemTest {
                 this.pricesByBarcode = pricesByBarcode;
             }
 
-            public String findPriceInCatalog(String barcode) {
+            public String findPrice(String barcode) {
                 return this.pricesByBarcode.get(barcode);
             }
         }
