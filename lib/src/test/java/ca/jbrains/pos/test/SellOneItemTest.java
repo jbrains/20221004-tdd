@@ -34,6 +34,16 @@ public class SellOneItemTest {
         Assertions.assertEquals("Product not found: 99999", display.getText());
     }
 
+    @Test
+    void emptyBarcode() {
+        final Display display = new Display();
+        final Sale sale = new Sale(display);
+
+        sale.onBarcode("");
+
+        Assertions.assertEquals("Scanning error: empty barcode", display.getText());
+    }
+
     private static class Display {
         public void setText(String text) {
             this.text = text;
