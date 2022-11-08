@@ -14,6 +14,16 @@ public class SellOneItemTest {
         Assertions.assertEquals("$7.95", display.getText());
     }
 
+    @Test
+    void anotherProductFound() {
+        final Display display = new Display();
+        final Sale sale = new Sale();
+
+        sale.onBarcode("23456");
+
+        Assertions.assertEquals("$12.50", display.getText());
+    }
+
     private static class Display {
         public String getText() {
             return "$7.95";
