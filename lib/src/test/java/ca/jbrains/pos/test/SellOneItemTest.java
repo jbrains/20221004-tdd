@@ -9,7 +9,7 @@ public class SellOneItemTest {
     @Test
     void productFound() {
         final Display display = new Display();
-        final Sale sale = new Sale(new Sale.Catalog(Map.of("12345", "$7.95",
+        final Sale sale = new Sale(new Catalog(Map.of("12345", "$7.95",
                 "23456", "$12.50")), display);
 
         sale.onBarcode("12345");
@@ -20,7 +20,7 @@ public class SellOneItemTest {
     @Test
     void anotherProductFound() {
         final Display display = new Display();
-        final Sale sale = new Sale(new Sale.Catalog(Map.of("12345", "$7.95",
+        final Sale sale = new Sale(new Catalog(Map.of("12345", "$7.95",
                 "23456", "$12.50")), display);
 
         sale.onBarcode("23456");
@@ -31,7 +31,7 @@ public class SellOneItemTest {
     @Test
     void productNotFound() {
         final Display display = new Display();
-        final Sale sale = new Sale(new Sale.Catalog(Map.of()), display);
+        final Sale sale = new Sale(new Catalog(Map.of()), display);
 
         sale.onBarcode("99999");
 
@@ -41,7 +41,7 @@ public class SellOneItemTest {
     @Test
     void emptyBarcode() {
         final Display display = new Display();
-        final Sale sale = new Sale(new Sale.Catalog(null), display);
+        final Sale sale = new Sale(new Catalog(null), display);
 
         sale.onBarcode("");
 
@@ -88,21 +88,21 @@ public class SellOneItemTest {
             else
                 display.displayProductNotFoundMessage(barcode);
         }
+    }
 
-        private static class Catalog {
-            private Map<String, String> pricesByBarcode;
+    private static class Catalog {
+        private Map<String, String> pricesByBarcode;
 
-            public Catalog(Map<String, String> pricesByBarcode) {
-                this.pricesByBarcode = pricesByBarcode;
-            }
+        public Catalog(Map<String, String> pricesByBarcode) {
+            this.pricesByBarcode = pricesByBarcode;
+        }
 
-            public String findPrice(String barcode) {
-                return this.pricesByBarcode.get(barcode);
-            }
+        public String findPrice(String barcode) {
+            return this.pricesByBarcode.get(barcode);
+        }
 
-            public boolean hasBarcode(String barcode) {
-                return this.pricesByBarcode.containsKey(barcode);
-            }
+        public boolean hasBarcode(String barcode) {
+            return this.pricesByBarcode.containsKey(barcode);
         }
     }
 }
