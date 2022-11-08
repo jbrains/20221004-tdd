@@ -1,7 +1,6 @@
 package ca.jbrains.pos.test;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class SellOneItemTest {
@@ -15,7 +14,6 @@ public class SellOneItemTest {
         Assertions.assertEquals("$7.95", display.getText());
     }
 
-    @Disabled("WIP: Refactoring. Move the output closer to the input.")
     @Test
     void anotherProductFound() {
         final Display display = new Display();
