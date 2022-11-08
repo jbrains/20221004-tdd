@@ -35,6 +35,7 @@ public class SellOneItemEndToEndTest {
                 $12.50""";
         Assertions.assertEquals(expectedTextOutput, actualTextOutput);
     }
+
     @Test
     void oneCommand_oneBarcode_productNotFound() {
         String actualTextOutput = consumeTextCommands(
@@ -55,10 +56,12 @@ public class SellOneItemEndToEndTest {
 
         final Map<String, String> pricesByBarcode = Map.of("12345", "$7.95",
                 "23456", "$12.50");
-        if ("12345".equals(theOnlyCommand) || "23456".equals(theOnlyCommand))
-            return pricesByBarcode.get(theOnlyCommand);
-        else
+
+        final String priceAsText = pricesByBarcode.get(theOnlyCommand);
+        if (priceAsText == null)
             return String.format("Product not found: %s", theOnlyCommand);
+        else
+            return priceAsText;
     }
 
     // REFACTOR Move to Text utility library
