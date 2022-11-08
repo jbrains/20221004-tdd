@@ -71,10 +71,12 @@ public class SellOneItemTest {
     private static class Sale {
         private final Map<String, String> pricesByBarcode;
         private final Display display;
+        private final Catalog catalog;
 
         private Sale(Map<String, String> pricesByBarcode, Display display) {
             this.display = display;
             this.pricesByBarcode = pricesByBarcode;
+            catalog = new Catalog(pricesByBarcode);
         }
 
         public void onBarcode(String barcode) {
@@ -84,7 +86,7 @@ public class SellOneItemTest {
             }
 
             if (pricesByBarcode.containsKey(barcode))
-                display.displayPrice(new Catalog(pricesByBarcode).findPrice(barcode));
+                display.displayPrice(catalog.findPrice(barcode));
             else
                 display.displayProductNotFoundMessage(barcode);
         }
