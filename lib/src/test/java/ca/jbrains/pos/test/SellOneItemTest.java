@@ -24,6 +24,16 @@ public class SellOneItemTest {
         Assertions.assertEquals("$12.50", display.getText());
     }
 
+    @Test
+    void productNotFound() {
+        final Display display = new Display();
+        final Sale sale = new Sale(display);
+
+        sale.onBarcode("99999");
+
+        Assertions.assertEquals("Product not found: 99999", display.getText());
+    }
+
     private static class Display {
         public void setText(String text) {
             this.text = text;
