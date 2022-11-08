@@ -3,6 +3,10 @@ package ca.jbrains.learning.java.lang;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.BufferedReader;
+import java.io.StringReader;
+import java.util.stream.Collectors;
+
 public class MultilineStringsContract {
     @Test
     void allLinesIndentedTheSame() {
@@ -17,9 +21,13 @@ public class MultilineStringsContract {
     }
 
     private static String[] linesOf(String firstLineIsBlank) {
-        // https://stackoverflow.com/a/2406699/253921
-        // This regex will preserve empty lines in our text when splitting.
-        return firstLineIsBlank.split(String.format("(?=%s)", System.lineSeparator()));
+        // I couldn't make String.split() do what I wanted, so I chose this solution.
+        // This solution preserves blank lines and ensures that no line ends
+        // in a newline character.
+        return new BufferedReader(new StringReader(firstLineIsBlank))
+                .lines()
+                .collect(Collectors.toList())
+                .toArray(new String[0]);
     }
 
     @Test
