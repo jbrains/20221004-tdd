@@ -16,7 +16,7 @@ public class SellOneItemTest {
 
     private static class Display {
         public String getText() {
-            return "obviously wrong";
+            return "$7.95";
         }
     }
 
