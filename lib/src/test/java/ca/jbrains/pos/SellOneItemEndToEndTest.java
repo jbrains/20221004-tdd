@@ -49,6 +49,9 @@ public class SellOneItemEndToEndTest {
         Assertions.assertEquals(expectedTextOutput, actualTextOutput);
     }
 
+    // SMELL Before adding the empty barcode case, do we _really_
+    // need to keep paying attention to "one command, one barcode"?!
+
     private String consumeTextCommands(String rawText) {
         final List<String> commandsAsLines = linesOf(rawText);
 
