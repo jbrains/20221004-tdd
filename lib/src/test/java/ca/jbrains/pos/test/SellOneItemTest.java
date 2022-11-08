@@ -31,8 +31,7 @@ public class SellOneItemTest {
     @Test
     void productNotFound() {
         final Display display = new Display();
-        final Sale sale = new Sale(display, Map.of("12345", "$7.95",
-                "23456", "$12.50"));
+        final Sale sale = new Sale(display, Map.of());
 
         sale.onBarcode("99999");
 
@@ -42,8 +41,7 @@ public class SellOneItemTest {
     @Test
     void emptyBarcode() {
         final Display display = new Display();
-        final Sale sale = new Sale(display, Map.of("12345", "$7.95",
-                "23456", "$12.50"));
+        final Sale sale = new Sale(display, null);
 
         sale.onBarcode("");
 
