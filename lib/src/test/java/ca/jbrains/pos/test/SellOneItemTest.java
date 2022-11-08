@@ -41,7 +41,7 @@ public class SellOneItemTest {
     @Test
     void emptyBarcode() {
         final Display display = new Display();
-        final Sale sale = new Sale(new Catalog(null), display);
+        final Sale sale = new Sale(null, display);
 
         sale.onBarcode("");
 
