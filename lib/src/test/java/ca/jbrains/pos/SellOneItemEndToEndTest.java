@@ -1,9 +1,11 @@
 package ca.jbrains.pos;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class SellOneItemEndToEndTest {
+    @Disabled("WIP: Investigating the Contract of multiline strings")
     @Test
     void happyPath() {
         String actualTextOutput = consumeTextCommands(
@@ -16,5 +18,9 @@ public class SellOneItemEndToEndTest {
                 $7.95
                 """;
         Assertions.assertEquals(expectedTextOutput, actualTextOutput);
+    }
+
+    private String consumeTextCommands(String rawText) {
+        return "obviously wrong";
     }
 }
