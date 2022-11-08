@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.io.BufferedReader;
 import java.io.StringReader;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class SellOneItemEndToEndTest {
@@ -52,8 +53,9 @@ public class SellOneItemEndToEndTest {
 
         final String theOnlyCommand = commandsAsLines.get(0);
 
+        final Map<String, String> pricesByBarcode = Map.of("12345", "$7.95");
         if ("12345".equals(theOnlyCommand))
-            return "$7.95";
+            return pricesByBarcode.get("12345");
         else if ("23456".equals(theOnlyCommand))
             return "$12.50";
         else
