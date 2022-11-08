@@ -69,13 +69,11 @@ public class SellOneItemTest {
     }
 
     private static class Sale {
-        private final Map<String, String> pricesByBarcode;
         private final Display display;
         private final Catalog catalog;
 
         private Sale(Map<String, String> pricesByBarcode, Display display) {
             this.display = display;
-            this.pricesByBarcode = pricesByBarcode;
             catalog = new Catalog(pricesByBarcode);
         }
 
