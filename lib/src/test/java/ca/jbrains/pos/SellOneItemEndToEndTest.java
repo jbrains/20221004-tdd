@@ -55,7 +55,7 @@ public class SellOneItemEndToEndTest {
         else if ("23456".equals(commandsAsLines.get(0)))
             return "$12.50";
         else
-            return "Product not found: 99999";
+            return String.format("Product not found: %s", commandsAsLines.get(0));
     }
 
     // REFACTOR Move to Text utility library
