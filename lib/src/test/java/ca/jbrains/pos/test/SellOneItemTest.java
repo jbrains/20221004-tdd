@@ -90,7 +90,15 @@ public class SellOneItemTest {
         }
 
         private String findPrice(String barcode) {
-            return pricesByBarcode.get(barcode);
+            return new Catalog(pricesByBarcode).pricesByBarcode.get(barcode);
+        }
+
+        private class Catalog {
+            private Map<String, String> pricesByBarcode;
+
+            public Catalog(Map<String, String> pricesByBarcode) {
+                this.pricesByBarcode = pricesByBarcode;
+            }
         }
     }
 }
