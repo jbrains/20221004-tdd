@@ -53,11 +53,12 @@ public class SellOneItemEndToEndTest {
 
         final String theOnlyCommand = commandsAsLines.get(0);
 
-        final Map<String, String> pricesByBarcode = Map.of("12345", "$7.95");
+        final Map<String, String> pricesByBarcode = Map.of("12345", "$7.95",
+                "23456", "$12.50");
         if ("12345".equals(theOnlyCommand))
             return pricesByBarcode.get("12345");
         else if ("23456".equals(theOnlyCommand))
-            return "$12.50";
+            return pricesByBarcode.get("23456");
         else
             return String.format("Product not found: %s", theOnlyCommand);
     }
