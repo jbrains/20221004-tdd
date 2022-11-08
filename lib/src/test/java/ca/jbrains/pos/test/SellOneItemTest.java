@@ -13,4 +13,15 @@ public class SellOneItemTest {
 
         Assertions.assertEquals("$7.95", display.getText());
     }
+
+    private static class Display {
+        public String getText() {
+            return "obviously wrong";
+        }
+    }
+
+    private static class Sale {
+        public void onBarcode(String barcode) {
+        }
+    }
 }
