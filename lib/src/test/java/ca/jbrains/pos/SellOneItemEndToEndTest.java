@@ -50,12 +50,14 @@ public class SellOneItemEndToEndTest {
     private String consumeTextCommands(String rawText) {
         final List<String> commandsAsLines = linesOf(rawText);
 
-        if ("12345".equals(commandsAsLines.get(0)))
+        final String theOnlyCommand = commandsAsLines.get(0);
+
+        if ("12345".equals(theOnlyCommand))
             return "$7.95";
-        else if ("23456".equals(commandsAsLines.get(0)))
+        else if ("23456".equals(theOnlyCommand))
             return "$12.50";
         else
-            return String.format("Product not found: %s", commandsAsLines.get(0));
+            return String.format("Product not found: %s", theOnlyCommand);
     }
 
     // REFACTOR Move to Text utility library
