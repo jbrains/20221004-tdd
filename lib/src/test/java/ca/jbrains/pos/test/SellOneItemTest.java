@@ -84,10 +84,10 @@ public class SellOneItemTest {
             }
 
             final String priceAsText = catalog.findPrice(barcode);
-            if (priceAsText != null)
-                display.displayPrice(priceAsText);
-            else
+            if (priceAsText == null)
                 display.displayProductNotFoundMessage(barcode);
+            else
+                display.displayPrice(priceAsText);
         }
     }
 
