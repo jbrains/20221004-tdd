@@ -1,11 +1,9 @@
 package ca.jbrains.pos;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class SellOneItemEndToEndTest {
-    @Disabled("WIP: Investigating the Contract of multiline strings")
     @Test
     void happyPath() {
         String actualTextOutput = consumeTextCommands(
