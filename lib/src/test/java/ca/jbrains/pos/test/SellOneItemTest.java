@@ -8,7 +8,7 @@ public class SellOneItemTest {
     @Test
     void productFound() {
         final Display display = new Display();
-        final Sale sale = new Sale();
+        final Sale sale = new Sale(display);
 
         sale.onBarcode("12345");
 
@@ -19,7 +19,7 @@ public class SellOneItemTest {
     @Test
     void anotherProductFound() {
         final Display display = new Display();
-        final Sale sale = new Sale();
+        final Sale sale = new Sale(display);
 
         sale.onBarcode("23456");
 
@@ -27,13 +27,26 @@ public class SellOneItemTest {
     }
 
     private static class Display {
+        public void setText(String text) {
+            this.text = text;
+        }
+
+        private String text;
+
         public String getText() {
-            return "$7.95";
+            return text;
         }
     }
 
     private static class Sale {
+        private Display display;
+
+        private Sale(Display display) {
+            this.display = display;
+        }
+
         public void onBarcode(String barcode) {
+            display.setText("$7.95");
         }
     }
 }
