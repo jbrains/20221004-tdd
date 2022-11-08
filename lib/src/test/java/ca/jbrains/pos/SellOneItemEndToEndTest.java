@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class SellOneItemEndToEndTest {
     @Test
-    void happyPath() {
+    void oneCommand_oneBarcode_productFound() {
         String actualTextOutput = consumeTextCommands(
                 """
                 12345
