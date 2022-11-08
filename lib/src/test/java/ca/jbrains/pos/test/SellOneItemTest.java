@@ -66,14 +66,15 @@ public class SellOneItemTest {
         }
 
         public void onBarcode(String barcode) {
-            final Map<String, String> pricesByBarcode = Map.of("12345", "$7.95");
+            final Map<String, String> pricesByBarcode = Map.of("12345", "$7.95",
+                    "23456", "$12.50");
 
             if ("".equals(barcode))
                 display.setText("Scanning error: empty barcode");
             else if ("12345".equals(barcode))
                 display.setText(pricesByBarcode.get("12345"));
             else if ("23456".equals(barcode))
-                display.setText("$12.50");
+                display.setText(pricesByBarcode.get("23456"));
             else
                 display.setText(String.format("Product not found: %s", barcode));
         }
