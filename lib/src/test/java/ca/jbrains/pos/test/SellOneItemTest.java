@@ -91,7 +91,7 @@ public class SellOneItemTest {
                 display.displayProductNotFoundMessage(barcode);
         }
 
-        private class Catalog {
+        private static class Catalog {
             private Map<String, String> pricesByBarcode;
 
             public Catalog(Map<String, String> pricesByBarcode) {
