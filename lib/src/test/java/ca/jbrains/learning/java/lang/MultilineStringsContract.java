@@ -57,17 +57,24 @@ public class MultilineStringsContract {
     }
 
     @Test
-    void ignoreMultipleBlankLinesAtTheEnd() {
+    void respectMultipleBlankLinesAtTheEnd() {
         final String endQuotesOnLineAfterLastLine = """
                 first line
                 second line
-                last line, even though blank lines follow
+                third-last line
+                
                 
                 """;
 
         final String[] lines = linesOf(endQuotesOnLineAfterLastLine);
         Assertions.assertEquals(
-                "last line, even though blank lines follow",
+                "third-last line",
+                lines[lines.length - 3]);
+        Assertions.assertEquals(
+                "",
+                lines[lines.length - 2]);
+        Assertions.assertEquals(
+                "",
                 lines[lines.length - 1]);
     }
 }
