@@ -85,7 +85,7 @@ public class SellOneItemTest {
                 return;
             }
 
-            if (pricesByBarcode.containsKey(barcode))
+            if (catalog.hasBarcode(barcode))
                 display.displayPrice(catalog.findPrice(barcode));
             else
                 display.displayProductNotFoundMessage(barcode);
@@ -100,6 +100,10 @@ public class SellOneItemTest {
 
             public String findPrice(String barcode) {
                 return this.pricesByBarcode.get(barcode);
+            }
+
+            public boolean hasBarcode(String barcode) {
+                return this.pricesByBarcode.containsKey(barcode);
             }
         }
     }
