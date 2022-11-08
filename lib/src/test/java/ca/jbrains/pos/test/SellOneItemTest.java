@@ -9,8 +9,8 @@ public class SellOneItemTest {
     @Test
     void productFound() {
         final Display display = new Display();
-        final Sale sale = new Sale(Map.of("12345", "$7.95",
-                "23456", "$12.50"), display);
+        final Sale sale = new Sale(display, new Sale.Catalog(Map.of("12345", "$7.95",
+                "23456", "$12.50")));
 
         sale.onBarcode("12345");
 
@@ -20,8 +20,8 @@ public class SellOneItemTest {
     @Test
     void anotherProductFound() {
         final Display display = new Display();
-        final Sale sale = new Sale(Map.of("12345", "$7.95",
-                "23456", "$12.50"), display);
+        final Sale sale = new Sale(display, new Sale.Catalog(Map.of("12345", "$7.95",
+                "23456", "$12.50")));
 
         sale.onBarcode("23456");
 
@@ -31,7 +31,7 @@ public class SellOneItemTest {
     @Test
     void productNotFound() {
         final Display display = new Display();
-        final Sale sale = new Sale(Map.of(), display);
+        final Sale sale = new Sale(display, new Sale.Catalog(Map.of()));
 
         sale.onBarcode("99999");
 
@@ -41,7 +41,7 @@ public class SellOneItemTest {
     @Test
     void emptyBarcode() {
         final Display display = new Display();
-        final Sale sale = new Sale(null, display);
+        final Sale sale = new Sale(display, new Sale.Catalog(null));
 
         sale.onBarcode("");
 
@@ -72,9 +72,9 @@ public class SellOneItemTest {
         private final Display display;
         private final Catalog catalog;
 
-        private Sale(Map<String, String> pricesByBarcode, Display display) {
+        private Sale(Display display, Catalog catalog) {
             this.display = display;
-            catalog = new Catalog(pricesByBarcode);
+            this.catalog = catalog;
         }
 
         public void onBarcode(String barcode) {
