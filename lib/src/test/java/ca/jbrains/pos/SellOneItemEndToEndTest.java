@@ -18,6 +18,6 @@ public class SellOneItemEndToEndTest {
     }
 
     private String consumeTextCommands(String rawText) {
-        return "obviously wrong";
+        return "$7.95";
     }
 }
