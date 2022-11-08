@@ -44,11 +44,11 @@ public class SellOneItemEndToEndTest {
             return "$12.50";
     }
 
-    private static List<String> linesOf(String rawText) {
-        final List<String> commandsAsLines =
-                new BufferedReader(new StringReader(rawText))
-                        .lines()
-                        .collect(Collectors.toList());
-        return commandsAsLines;
+    // REFACTOR Move to Text utility library
+    // REFACTOR Change tests to use this
+    private static List<String> linesOf(String text) {
+        return new BufferedReader(new StringReader(text))
+                .lines()
+                .collect(Collectors.toList());
     }
 }
