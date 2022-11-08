@@ -84,13 +84,9 @@ public class SellOneItemTest {
             }
 
             if (pricesByBarcode.containsKey(barcode))
-                display.displayPrice(findPrice(barcode));
+                display.displayPrice(new Catalog(pricesByBarcode).findPrice(barcode));
             else
                 display.displayProductNotFoundMessage(barcode);
-        }
-
-        private String findPrice(String barcode) {
-            return new Catalog(pricesByBarcode).findPrice(barcode);
         }
 
         private class Catalog {
