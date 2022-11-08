@@ -56,9 +56,9 @@ public class SellOneItemEndToEndTest {
         final Map<String, String> pricesByBarcode = Map.of("12345", "$7.95",
                 "23456", "$12.50");
         if ("12345".equals(theOnlyCommand))
-            return pricesByBarcode.get("12345");
+            return pricesByBarcode.get(theOnlyCommand);
         else if ("23456".equals(theOnlyCommand))
-            return pricesByBarcode.get("23456");
+            return pricesByBarcode.get(theOnlyCommand);
         else
             return String.format("Product not found: %s", theOnlyCommand);
     }
