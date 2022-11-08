@@ -34,14 +34,28 @@ public class SellOneItemEndToEndTest {
                 $12.50""";
         Assertions.assertEquals(expectedTextOutput, actualTextOutput);
     }
+    @Test
+    void oneCommand_oneBarcode_productNotFound() {
+        String actualTextOutput = consumeTextCommands(
+                """
+                        99999
+                        """
+        );
+
+        final String expectedTextOutput = """
+                Product not found: 99999""";
+        Assertions.assertEquals(expectedTextOutput, actualTextOutput);
+    }
 
     private String consumeTextCommands(String rawText) {
         final List<String> commandsAsLines = linesOf(rawText);
 
         if ("12345".equals(commandsAsLines.get(0)))
             return "$7.95";
-        else
+        else if ("23456".equals(commandsAsLines.get(0)))
             return "$12.50";
+        else
+            return "Product not found: 99999";
     }
 
     // REFACTOR Move to Text utility library
